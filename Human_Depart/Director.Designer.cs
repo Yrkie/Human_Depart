@@ -28,14 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Search = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.PosadaR = new System.Windows.Forms.RadioButton();
             this.PIBR = new System.Windows.Forms.RadioButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.SearchW = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
@@ -63,7 +62,6 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.bunifuFlatButton1);
             this.panel1.Controls.Add(this.Search);
-            this.panel1.Controls.Add(this.PosadaR);
             this.panel1.Controls.Add(this.PIBR);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Controls.Add(this.SearchW);
@@ -110,7 +108,8 @@
             this.bunifuFlatButton1.Text = "Друк";
             this.bunifuFlatButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuFlatButton1.Textcolor = System.Drawing.Color.White;
-            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuFlatButton1.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuFlatButton1.Click += new System.EventHandler(this.bunifuFlatButton1_Click);
             // 
             // Search
             // 
@@ -144,18 +143,8 @@
             this.Search.Text = "Пошук";
             this.Search.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Search.Textcolor = System.Drawing.Color.White;
-            this.Search.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            // 
-            // PosadaR
-            // 
-            this.PosadaR.AutoSize = true;
-            this.PosadaR.Location = new System.Drawing.Point(1121, 68);
-            this.PosadaR.Name = "PosadaR";
-            this.PosadaR.Size = new System.Drawing.Size(74, 17);
-            this.PosadaR.TabIndex = 77;
-            this.PosadaR.TabStop = true;
-            this.PosadaR.Text = "По посаді";
-            this.PosadaR.UseVisualStyleBackColor = true;
+            this.Search.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
             // PIBR
             // 
@@ -172,10 +161,10 @@
             // 
             this.bunifuCustomLabel1.AutoSize = true;
             this.bunifuCustomLabel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Arial Narrow", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(938, 15);
+            this.bunifuCustomLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(931, 15);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(76, 29);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(92, 29);
             this.bunifuCustomLabel1.TabIndex = 75;
             this.bunifuCustomLabel1.Text = "Пошук";
             this.bunifuCustomLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -221,7 +210,7 @@
             this.communi.Text = "Зв\'язок";
             this.communi.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.communi.Textcolor = System.Drawing.Color.White;
-            this.communi.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.communi.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             // 
             // Excel
             // 
@@ -229,7 +218,7 @@
             this.Excel.BackColor = System.Drawing.SystemColors.HotTrack;
             this.Excel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Excel.BorderRadius = 0;
-            this.Excel.ButtonText = "Друк";
+            this.Excel.ButtonText = "Excel";
             this.Excel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Excel.DisabledColor = System.Drawing.Color.Gray;
             this.Excel.Iconcolor = System.Drawing.Color.Transparent;
@@ -252,10 +241,11 @@
             this.Excel.selected = false;
             this.Excel.Size = new System.Drawing.Size(149, 39);
             this.Excel.TabIndex = 72;
-            this.Excel.Text = "Друк";
+            this.Excel.Text = "Excel";
             this.Excel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Excel.Textcolor = System.Drawing.Color.White;
-            this.Excel.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Excel.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Excel.Click += new System.EventHandler(this.Excel_Click);
             // 
             // Drop
             // 
@@ -289,7 +279,8 @@
             this.Drop.Text = "Скинути";
             this.Drop.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Drop.Textcolor = System.Drawing.Color.White;
-            this.Drop.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Drop.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Drop.Click += new System.EventHandler(this.Drop_Click);
             // 
             // Delete
             // 
@@ -323,7 +314,8 @@
             this.Delete.Text = "Видалити";
             this.Delete.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Delete.Textcolor = System.Drawing.Color.White;
-            this.Delete.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // Updated
             // 
@@ -357,7 +349,7 @@
             this.Updated.Text = "Оновлення";
             this.Updated.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Updated.Textcolor = System.Drawing.Color.White;
-            this.Updated.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Updated.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Updated.Click += new System.EventHandler(this.Updated_Click);
             // 
             // panel2
@@ -379,10 +371,10 @@
             // 
             this.bunifuCustomLabel2.AutoSize = true;
             this.bunifuCustomLabel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(42, 195);
+            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(36, 103);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(31, 20);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(30, 16);
             this.bunifuCustomLabel2.TabIndex = 75;
             this.bunifuCustomLabel2.Text = "ПІБ";
             this.bunifuCustomLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -390,7 +382,7 @@
             // Pibtxt
             // 
             this.Pibtxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.Pibtxt.Location = new System.Drawing.Point(151, 199);
+            this.Pibtxt.Location = new System.Drawing.Point(137, 104);
             this.Pibtxt.Name = "Pibtxt";
             this.Pibtxt.Size = new System.Drawing.Size(195, 20);
             this.Pibtxt.TabIndex = 74;
@@ -427,7 +419,7 @@
             this.Add.Text = "Додати";
             this.Add.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Add.Textcolor = System.Drawing.Color.White;
-            this.Add.TextFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Add.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
             // gendercb
@@ -436,7 +428,7 @@
             this.gendercb.Items.AddRange(new object[] {
             "Чоловіча",
             "Жіноча"});
-            this.gendercb.Location = new System.Drawing.Point(156, 239);
+            this.gendercb.Location = new System.Drawing.Point(137, 144);
             this.gendercb.Name = "gendercb";
             this.gendercb.Size = new System.Drawing.Size(192, 21);
             this.gendercb.TabIndex = 72;
@@ -445,10 +437,10 @@
             // 
             this.bunifuCustomLabel8.AutoSize = true;
             this.bunifuCustomLabel8.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(42, 241);
+            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuCustomLabel8.Location = new System.Drawing.Point(36, 149);
             this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(45, 20);
+            this.bunifuCustomLabel8.Size = new System.Drawing.Size(45, 16);
             this.bunifuCustomLabel8.TabIndex = 71;
             this.bunifuCustomLabel8.Text = "Стать";
             this.bunifuCustomLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -456,7 +448,7 @@
             // birthdaytxt
             // 
             this.birthdaytxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.birthdaytxt.Location = new System.Drawing.Point(156, 277);
+            this.birthdaytxt.Location = new System.Drawing.Point(137, 183);
             this.birthdaytxt.Mask = "0000.00.00";
             this.birthdaytxt.Name = "birthdaytxt";
             this.birthdaytxt.Size = new System.Drawing.Size(100, 20);
@@ -467,10 +459,10 @@
             // 
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(8, 279);
+            this.bunifuCustomLabel3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(2, 187);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(121, 20);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(125, 16);
             this.bunifuCustomLabel3.TabIndex = 64;
             this.bunifuCustomLabel3.Text = "Дата народження";
             this.bunifuCustomLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -478,29 +470,29 @@
             // WorkerDataGrid
             // 
             this.WorkerDataGrid.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.WorkerDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.WorkerDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.WorkerDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.WorkerDataGrid.BackgroundColor = System.Drawing.Color.White;
             this.WorkerDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.WorkerDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.WorkerDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(122)))), ((int)(((byte)(224)))));
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.WorkerDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.WorkerDataGrid.ColumnHeadersHeight = 30;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.WorkerDataGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.WorkerDataGrid.DefaultCellStyle = dataGridViewCellStyle11;
             this.WorkerDataGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WorkerDataGrid.DoubleBuffered = true;
             this.WorkerDataGrid.EnableHeadersVisualStyles = false;
@@ -510,13 +502,14 @@
             this.WorkerDataGrid.Name = "WorkerDataGrid";
             this.WorkerDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.WorkerDataGrid.RowHeadersVisible = false;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.WorkerDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.WorkerDataGrid.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.WorkerDataGrid.RowTemplate.DividerHeight = 1;
             this.WorkerDataGrid.RowTemplate.Height = 30;
             this.WorkerDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.WorkerDataGrid.Size = new System.Drawing.Size(1044, 516);
             this.WorkerDataGrid.TabIndex = 9;
+            this.WorkerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WorkerDataGrid_CellClick);
             // 
             // Director
             // 
@@ -549,7 +542,6 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton Search;
-        private System.Windows.Forms.RadioButton PosadaR;
         private System.Windows.Forms.RadioButton PIBR;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox SearchW;

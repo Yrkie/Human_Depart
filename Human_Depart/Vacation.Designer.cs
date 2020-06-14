@@ -1,6 +1,6 @@
 ﻿namespace Human_Depart
 {
-    partial class Worker
+    partial class Vacation
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuFlatButton1 = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Search = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.PosadaR = new System.Windows.Forms.RadioButton();
             this.PIBR = new System.Windows.Forms.RadioButton();
+            this.CAUSER = new System.Windows.Forms.RadioButton();
             this.bunifuCustomLabel1 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.SearchW = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.communi = new Bunifu.Framework.UI.BunifuFlatButton();
@@ -45,21 +45,17 @@
             this.Delete = new Bunifu.Framework.UI.BunifuFlatButton();
             this.Updated = new Bunifu.Framework.UI.BunifuFlatButton();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.Pibtxt = new System.Windows.Forms.MaskedTextBox();
+            this.Pibtxt = new System.Windows.Forms.TextBox();
+            this.Numworker = new System.Windows.Forms.ComboBox();
+            this.dateendtxt = new System.Windows.Forms.MaskedTextBox();
             this.Add = new Bunifu.Framework.UI.BunifuFlatButton();
-            this.gendercb = new System.Windows.Forms.ComboBox();
-            this.bunifuCustomLabel8 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.birthdaytxt = new System.Windows.Forms.MaskedTextBox();
-            this.phonenumbertxt = new System.Windows.Forms.MaskedTextBox();
+            this.datebtxt = new System.Windows.Forms.MaskedTextBox();
             this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.positiontxt = new System.Windows.Forms.MaskedTextBox();
-            this.salarytxt = new System.Windows.Forms.MaskedTextBox();
-            this.Addresstxt = new System.Windows.Forms.MaskedTextBox();
+            this.cause = new System.Windows.Forms.MaskedTextBox();
             this.WorkerDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -71,8 +67,8 @@
             this.panel1.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel1.Controls.Add(this.bunifuFlatButton1);
             this.panel1.Controls.Add(this.Search);
-            this.panel1.Controls.Add(this.PosadaR);
             this.panel1.Controls.Add(this.PIBR);
+            this.panel1.Controls.Add(this.CAUSER);
             this.panel1.Controls.Add(this.bunifuCustomLabel1);
             this.panel1.Controls.Add(this.SearchW);
             this.panel1.Controls.Add(this.communi);
@@ -156,27 +152,27 @@
             this.Search.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // PosadaR
-            // 
-            this.PosadaR.AutoSize = true;
-            this.PosadaR.Location = new System.Drawing.Point(1121, 68);
-            this.PosadaR.Name = "PosadaR";
-            this.PosadaR.Size = new System.Drawing.Size(74, 17);
-            this.PosadaR.TabIndex = 77;
-            this.PosadaR.TabStop = true;
-            this.PosadaR.Text = "По посаді";
-            this.PosadaR.UseVisualStyleBackColor = true;
-            // 
             // PIBR
             // 
             this.PIBR.AutoSize = true;
-            this.PIBR.Location = new System.Drawing.Point(1029, 68);
+            this.PIBR.Location = new System.Drawing.Point(1121, 68);
             this.PIBR.Name = "PIBR";
             this.PIBR.Size = new System.Drawing.Size(60, 17);
-            this.PIBR.TabIndex = 76;
+            this.PIBR.TabIndex = 77;
             this.PIBR.TabStop = true;
             this.PIBR.Text = "По ПІБ";
             this.PIBR.UseVisualStyleBackColor = true;
+            // 
+            // CAUSER
+            // 
+            this.CAUSER.AutoSize = true;
+            this.CAUSER.Location = new System.Drawing.Point(1029, 68);
+            this.CAUSER.Name = "CAUSER";
+            this.CAUSER.Size = new System.Drawing.Size(79, 17);
+            this.CAUSER.TabIndex = 76;
+            this.CAUSER.TabStop = true;
+            this.CAUSER.Text = "По причині";
+            this.CAUSER.UseVisualStyleBackColor = true;
             // 
             // bunifuCustomLabel1
             // 
@@ -375,46 +371,48 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.bunifuCustomLabel2);
             this.panel2.Controls.Add(this.Pibtxt);
+            this.panel2.Controls.Add(this.Numworker);
+            this.panel2.Controls.Add(this.dateendtxt);
             this.panel2.Controls.Add(this.Add);
-            this.panel2.Controls.Add(this.gendercb);
-            this.panel2.Controls.Add(this.bunifuCustomLabel8);
-            this.panel2.Controls.Add(this.birthdaytxt);
-            this.panel2.Controls.Add(this.phonenumbertxt);
+            this.panel2.Controls.Add(this.datebtxt);
             this.panel2.Controls.Add(this.bunifuCustomLabel7);
             this.panel2.Controls.Add(this.bunifuCustomLabel6);
             this.panel2.Controls.Add(this.bunifuCustomLabel5);
             this.panel2.Controls.Add(this.bunifuCustomLabel4);
             this.panel2.Controls.Add(this.bunifuCustomLabel3);
-            this.panel2.Controls.Add(this.positiontxt);
-            this.panel2.Controls.Add(this.salarytxt);
-            this.panel2.Controls.Add(this.Addresstxt);
+            this.panel2.Controls.Add(this.cause);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1044, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(353, 516);
             this.panel2.TabIndex = 1;
             // 
-            // bunifuCustomLabel2
-            // 
-            this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(36, 103);
-            this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(30, 16);
-            this.bunifuCustomLabel2.TabIndex = 75;
-            this.bunifuCustomLabel2.Text = "ПІБ";
-            this.bunifuCustomLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // Pibtxt
             // 
-            this.Pibtxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.Pibtxt.Location = new System.Drawing.Point(137, 104);
+            this.Pibtxt.Location = new System.Drawing.Point(149, 299);
             this.Pibtxt.Name = "Pibtxt";
-            this.Pibtxt.Size = new System.Drawing.Size(195, 20);
-            this.Pibtxt.TabIndex = 74;
+            this.Pibtxt.Size = new System.Drawing.Size(192, 20);
+            this.Pibtxt.TabIndex = 78;
+            // 
+            // Numworker
+            // 
+            this.Numworker.FormattingEnabled = true;
+            this.Numworker.Location = new System.Drawing.Point(151, 256);
+            this.Numworker.Name = "Numworker";
+            this.Numworker.Size = new System.Drawing.Size(190, 21);
+            this.Numworker.TabIndex = 77;
+            this.Numworker.SelectedIndexChanged += new System.EventHandler(this.Numworker_SelectedIndexChanged);
+            // 
+            // dateendtxt
+            // 
+            this.dateendtxt.Culture = new System.Globalization.CultureInfo("ru-BY");
+            this.dateendtxt.Location = new System.Drawing.Point(149, 172);
+            this.dateendtxt.Mask = "0000.00.00";
+            this.dateendtxt.Name = "dateendtxt";
+            this.dateendtxt.Size = new System.Drawing.Size(192, 20);
+            this.dateendtxt.TabIndex = 76;
+            this.dateendtxt.Text = "19800101";
             // 
             // Add
             // 
@@ -451,58 +449,26 @@
             this.Add.TextFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Add.Click += new System.EventHandler(this.Add_Click);
             // 
-            // gendercb
+            // datebtxt
             // 
-            this.gendercb.FormattingEnabled = true;
-            this.gendercb.Items.AddRange(new object[] {
-            "Чоловіча",
-            "Жіноча"});
-            this.gendercb.Location = new System.Drawing.Point(137, 144);
-            this.gendercb.Name = "gendercb";
-            this.gendercb.Size = new System.Drawing.Size(192, 21);
-            this.gendercb.TabIndex = 72;
-            // 
-            // bunifuCustomLabel8
-            // 
-            this.bunifuCustomLabel8.AutoSize = true;
-            this.bunifuCustomLabel8.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.bunifuCustomLabel8.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel8.Location = new System.Drawing.Point(36, 149);
-            this.bunifuCustomLabel8.Name = "bunifuCustomLabel8";
-            this.bunifuCustomLabel8.Size = new System.Drawing.Size(45, 16);
-            this.bunifuCustomLabel8.TabIndex = 71;
-            this.bunifuCustomLabel8.Text = "Стать";
-            this.bunifuCustomLabel8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // birthdaytxt
-            // 
-            this.birthdaytxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.birthdaytxt.Location = new System.Drawing.Point(137, 183);
-            this.birthdaytxt.Mask = "0000.00.00";
-            this.birthdaytxt.Name = "birthdaytxt";
-            this.birthdaytxt.Size = new System.Drawing.Size(100, 20);
-            this.birthdaytxt.TabIndex = 70;
-            this.birthdaytxt.Text = "19800101";
-            // 
-            // phonenumbertxt
-            // 
-            this.phonenumbertxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.phonenumbertxt.Location = new System.Drawing.Point(138, 361);
-            this.phonenumbertxt.Mask = "+380000000000";
-            this.phonenumbertxt.Name = "phonenumbertxt";
-            this.phonenumbertxt.Size = new System.Drawing.Size(121, 20);
-            this.phonenumbertxt.TabIndex = 69;
+            this.datebtxt.Culture = new System.Globalization.CultureInfo("ru-BY");
+            this.datebtxt.Location = new System.Drawing.Point(149, 130);
+            this.datebtxt.Mask = "0000.00.00";
+            this.datebtxt.Name = "datebtxt";
+            this.datebtxt.Size = new System.Drawing.Size(192, 20);
+            this.datebtxt.TabIndex = 70;
+            this.datebtxt.Text = "19800101";
             // 
             // bunifuCustomLabel7
             // 
             this.bunifuCustomLabel7.AutoSize = true;
             this.bunifuCustomLabel7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(26, 225);
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(13, 174);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
-            this.bunifuCustomLabel7.Size = new System.Drawing.Size(56, 16);
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(78, 16);
             this.bunifuCustomLabel7.TabIndex = 68;
-            this.bunifuCustomLabel7.Text = "Посада";
+            this.bunifuCustomLabel7.Text = "Дата кінця";
             this.bunifuCustomLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel6
@@ -510,11 +476,11 @@
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(2, 274);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(13, 219);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(116, 16);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(65, 16);
             this.bunifuCustomLabel6.TabIndex = 67;
-            this.bunifuCustomLabel6.Text = "Заробітна плата";
+            this.bunifuCustomLabel6.Text = "Причина";
             this.bunifuCustomLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel5
@@ -522,11 +488,11 @@
             this.bunifuCustomLabel5.AutoSize = true;
             this.bunifuCustomLabel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(26, 312);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(13, 258);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
-            this.bunifuCustomLabel5.Size = new System.Drawing.Size(56, 16);
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(129, 16);
             this.bunifuCustomLabel5.TabIndex = 66;
-            this.bunifuCustomLabel5.Text = "Адреса";
+            this.bunifuCustomLabel5.Text = "Номер працівника";
             this.bunifuCustomLabel5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel4
@@ -534,11 +500,11 @@
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(13, 365);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(15, 298);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
-            this.bunifuCustomLabel4.Size = new System.Drawing.Size(119, 16);
+            this.bunifuCustomLabel4.Size = new System.Drawing.Size(30, 16);
             this.bunifuCustomLabel4.TabIndex = 65;
-            this.bunifuCustomLabel4.Text = "Номер телефону";
+            this.bunifuCustomLabel4.Text = "ПІБ";
             this.bunifuCustomLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel3
@@ -546,37 +512,20 @@
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(2, 187);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(13, 132);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
-            this.bunifuCustomLabel3.Size = new System.Drawing.Size(125, 16);
+            this.bunifuCustomLabel3.Size = new System.Drawing.Size(95, 16);
             this.bunifuCustomLabel3.TabIndex = 64;
-            this.bunifuCustomLabel3.Text = "Дата народження";
+            this.bunifuCustomLabel3.Text = "Дата початку";
             this.bunifuCustomLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // positiontxt
+            // cause
             // 
-            this.positiontxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.positiontxt.Location = new System.Drawing.Point(137, 225);
-            this.positiontxt.Name = "positiontxt";
-            this.positiontxt.Size = new System.Drawing.Size(192, 20);
-            this.positiontxt.TabIndex = 63;
-            // 
-            // salarytxt
-            // 
-            this.salarytxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.salarytxt.Location = new System.Drawing.Point(137, 274);
-            this.salarytxt.Mask = "0000 грн";
-            this.salarytxt.Name = "salarytxt";
-            this.salarytxt.Size = new System.Drawing.Size(58, 20);
-            this.salarytxt.TabIndex = 62;
-            // 
-            // Addresstxt
-            // 
-            this.Addresstxt.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.Addresstxt.Location = new System.Drawing.Point(137, 312);
-            this.Addresstxt.Name = "Addresstxt";
-            this.Addresstxt.Size = new System.Drawing.Size(192, 20);
-            this.Addresstxt.TabIndex = 61;
+            this.cause.Culture = new System.Globalization.CultureInfo("ru-BY");
+            this.cause.Location = new System.Drawing.Point(149, 214);
+            this.cause.Name = "cause";
+            this.cause.Size = new System.Drawing.Size(192, 20);
+            this.cause.TabIndex = 62;
             // 
             // WorkerDataGrid
             // 
@@ -622,7 +571,7 @@
             this.WorkerDataGrid.TabIndex = 9;
             this.WorkerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WorkerDataGrid_CellClick);
             // 
-            // Worker
+            // Vacation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -632,8 +581,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Worker";
+            this.Name = "Vacation";
             this.Text = "Worker";
+            this.Load += new System.EventHandler(this.Vacation_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -647,22 +597,17 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.ComboBox gendercb;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel8;
-        private System.Windows.Forms.MaskedTextBox birthdaytxt;
-        private System.Windows.Forms.MaskedTextBox phonenumbertxt;
+        private System.Windows.Forms.MaskedTextBox datebtxt;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
-        public System.Windows.Forms.MaskedTextBox positiontxt;
-        public System.Windows.Forms.MaskedTextBox salarytxt;
-        public System.Windows.Forms.MaskedTextBox Addresstxt;
+        public System.Windows.Forms.MaskedTextBox cause;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton Search;
-        private System.Windows.Forms.RadioButton PosadaR;
         private System.Windows.Forms.RadioButton PIBR;
+        private System.Windows.Forms.RadioButton CAUSER;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel1;
         private WindowsFormsControlLibrary1.BunifuCustomTextbox SearchW;
         private Bunifu.Framework.UI.BunifuFlatButton communi;
@@ -670,9 +615,10 @@
         private Bunifu.Framework.UI.BunifuFlatButton Drop;
         private Bunifu.Framework.UI.BunifuFlatButton Delete;
         private Bunifu.Framework.UI.BunifuFlatButton Updated;
-        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel2;
-        public System.Windows.Forms.MaskedTextBox Pibtxt;
         private Bunifu.Framework.UI.BunifuFlatButton Add;
         private Bunifu.Framework.UI.BunifuCustomDataGrid WorkerDataGrid;
+        private System.Windows.Forms.MaskedTextBox dateendtxt;
+        private System.Windows.Forms.TextBox Pibtxt;
+        private System.Windows.Forms.ComboBox Numworker;
     }
 }

@@ -66,5 +66,23 @@ namespace Human_Depart
         {
             Application.Exit();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            openNewForm(new Director());
+            hideSubMenu();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openNewForm(new Education());
+            hideSubMenu();
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            openNewForm(new Vacation());
+            hideSubMenu();
+        }
     }
 }

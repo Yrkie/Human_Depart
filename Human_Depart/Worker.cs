@@ -201,5 +201,120 @@ namespace Human_Depart
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void bunifuFlatButton1_Click(object sender, EventArgs e)
+        {
+            Microsoft.Office.Interop.Excel._Application excel = new Microsoft.Office.Interop.Excel.Application();
+            Microsoft.Office.Interop.Excel._Workbook workbook = excel.Workbooks.Add(Type.Missing);
+            Microsoft.Office.Interop.Excel._Worksheet worksheet = null;
+
+            try
+            {
+
+                worksheet = workbook.ActiveSheet;
+
+                worksheet.Name = "Лист1";
+
+                int cellrowindex = 1;
+                int cellcolumnindex = 1;
+
+
+                for (int i = 0; i <= WorkerDataGrid.Rows.Count; i++)
+                {
+                    for (int j = 0; j < WorkerDataGrid.Columns.Count; j++)
+                    {
+
+                        if (cellrowindex == 1)
+                        {
+                            worksheet.Cells[cellrowindex, cellcolumnindex] = WorkerDataGrid.Columns[j].HeaderText;
+
+                        }
+                        else
+                        {
+                            worksheet.Cells[cellrowindex, cellcolumnindex] = WorkerDataGrid.Rows[i - 1].Cells[j].Value.ToString();
+                        }
+                        cellcolumnindex++;
+                    }
+                    cellcolumnindex = 1;
+                    cellrowindex++;
+                }
+
+
+                SaveFileDialog savedialog = new SaveFileDialog();
+
+                savedialog.Filter = "excel files (*.xlsx)|*.xlsx|all files (*.*)|*.*";
+                savedialog.FilterIndex = 2;
+                savedialog.FileName = "report_1"; //put file name here
+
+                if (savedialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+
+                {
+                    workbook.SaveAs(savedialog.FileName);
+                    MessageBox.Show("export successful");
+                }
+            }
+            catch (System.Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                excel.Quit();
+                workbook = null;
+                excel = null;
+            }
+        }
+
+        private void Search_Click(object sender, EventArgs e)
+        {
+            if (SearchW.Text.Trim() != string.Empty)
+            {
+                MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
+
+                con.Open();
+
+                MySqlCommand cmd;
+
+                cmd = con.CreateCommand();
+
+                if (PIBR.Checked)
+                {
+                    cmd.CommandText = "Select * FROM працівник WHERE ПІБ_працівника =@pib";
+                    cmd.Parameters.AddWithValue("@pib", SearchW.Text);
+                }
+                else if (PosadaR.Checked)
+                {
+                    cmd.CommandText = "Select * from працівник where Посада =@Position";
+                    cmd.Parameters.AddWithValue("@Position", SearchW.Text);
+                }
+                MySqlDataReader sd = cmd.ExecuteReader();
+                DataTable dataT = new DataTable();
+
+                dataT.Load(sd);
+
+                if (dataT.Rows.Count > 0)
+                {
+                    WorkerDataGrid.DataSource = dataT;
+                }
+                else
+                {
+                    MessageBox.Show("Не було знайдено жодного запису", "");
+                }
+
+            }
+        }
+
+        private void WorkerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            worker_id = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
+            Pibtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
+            gendercb.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
+            birthdaytxt.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
+            positiontxt.Text = WorkerDataGrid.SelectedRows[0].Cells[4].Value.ToString();
+            salarytxt.Text = WorkerDataGrid.SelectedRows[0].Cells[5].Value.ToString();
+            Addresstxt.Text = WorkerDataGrid.SelectedRows[0].Cells[6].Value.ToString();
+            phonenumbertxt.Text = WorkerDataGrid.SelectedRows[0].Cells[7].Value.ToString();
+
+        }
     }
 }

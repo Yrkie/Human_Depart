@@ -14,14 +14,15 @@ using System.Globalization;
 
 namespace Human_Depart
 {
-    public partial class Director : Form
+    public partial class Vacation : Form
     {
-        public Director()
+        public static MySqlConnection con1 = new MySqlConnection(@"server=127.0.0.1;user id=root;persistsecurityinfo=True;database=human_depart;allowzerodatetime=True");
+        public Vacation()
         {
             InitializeComponent();
             LoadDataIntoDataGridView();
         }
-        public int worker_id;
+        public int numberorderv;
         private void LoadDataIntoDataGridView()
         {
             MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
@@ -30,7 +31,7 @@ namespace Human_Depart
             MySqlCommand cmd;
 
             cmd = con.CreateCommand();
-            cmd.CommandText = "Select * from директор;";
+            cmd.CommandText = "Select * from відпустка;";
             MySqlDataReader sd = cmd.ExecuteReader();
 
             DataTable dataT = new DataTable();
@@ -42,7 +43,24 @@ namespace Human_Depart
 
 
         }
+        public void cc()
+        {
+            Numworker.Items.Clear();
+            con1.Open();
+            MySqlCommand cm = con1.CreateCommand();
+            cm.CommandType = CommandType.Text;
+            cm.CommandText = "select * from працівник";
+            cm.ExecuteNonQuery();
+            DataTable dataTT = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cm);
+            da.Fill(dataTT);
+            foreach (DataRow dr in dataTT.Rows)
+            {
+                Numworker.Items.Add(dr["Номер_працівника"].ToString());
+            }
 
+            con1.Close();
+        }
         private void Add_Click(object sender, EventArgs e)
         {
             if (IsValid())
@@ -54,14 +72,17 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO директор(ПІБ,Стать,Дата_народження) VALUES(@PIB,@gender, @Birthday)";
-                cmd.Parameters.AddWithValue("@PIB", Pibtxt.Text);
-                cmd.Parameters.AddWithValue("@gender", gendercb.Text);
-                cmd.Parameters.AddWithValue("@Birthday", DateTime.TryParse(birthdaytxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
-                
+                cmd.CommandText = "INSERT INTO відпустка(Дата_початку,Дата_кінця,Причина,Номер_працівника,ПІБ_працівника) VALUES(@dateb,@dateend, @cause,@idw,@PIBW)";
+                cmd.Parameters.AddWithValue("@dateb", DateTime.TryParse(datebtxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
+                cmd.Parameters.AddWithValue("@dateend", DateTime.TryParse(dateendtxt.Text, out var birthdayy) ? birthdayy : DateTime.Parse("1980/01/01"));
+                cmd.Parameters.AddWithValue("@cause",cause.Text );
+                cmd.Parameters.AddWithValue("@idw", Numworker.Text);
+                 cmd.Parameters.AddWithValue("@PIBW", Pibtxt.Text);
+              
                 cmd.ExecuteNonQuery();
 
                 con.Close();
+             
 
                 MessageBox.Show("Данні додані до бази", "Успішно");
 
@@ -71,24 +92,31 @@ namespace Human_Depart
         {
 
             CultureInfo ci = new CultureInfo("en-IE");
-            if (Pibtxt.Text.Trim() == string.Empty)
+            if (cause.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("ПІБ потрібно заповнити", "Помилка поля");
                 return false;
             }
-            else if (!DateTime.TryParseExact(birthdaytxt.Text, "yyyy,MM,dd", ci, DateTimeStyles.None, out var rs))
+            else if (!DateTime.TryParseExact(datebtxt.Text, "yyyy,MM,dd", ci, DateTimeStyles.None, out var rs))
             {
 
                 MessageBox.Show(" вводи дату", "Помилка поля");
                 return false;
             }
+            else if (!DateTime.TryParseExact(dateendtxt.Text, "yyyy,MM,dd", ci, DateTimeStyles.None, out var rp))
+            {
+
+                MessageBox.Show(" вводи дату", "Помилка поля");
+                return false;
+            }
+            
             return true;
         }
 
         private void Updated_Click(object sender, EventArgs e)
         {
 
-            if (worker_id != 0)
+            if (numberorderv != 0)
             {
                 MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
 
@@ -97,15 +125,13 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE директор set ПІБ=@PIB,Стать=@gender,Дата_народження=@Birthday WHERE Номер_директора =@id";
-
-                cmd.Parameters.AddWithValue("@PIB", Pibtxt.Text);
-                cmd.Parameters.AddWithValue("@gender", gendercb.Text);
-                cmd.Parameters.AddWithValue("@Birthday", DateTime.TryParse(birthdaytxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
-                
-                cmd.Parameters.AddWithValue("@id", this.worker_id);
-
-
+                cmd.CommandText = "UPDATE відпустка set Дата_початку= @dateb,Дата_кінця=@dateend,Причина=@cause,Номер_працівника=@idw,ПІБ_працівника=@PIBW WHERE Номер_наказу_про_відпустку =@id";
+                cmd.Parameters.AddWithValue("@dateb", DateTime.TryParse(datebtxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
+                cmd.Parameters.AddWithValue("@dateend", DateTime.TryParse(dateendtxt.Text, out var birthdayy) ? birthdayy : DateTime.Parse("1980/01/01"));
+                cmd.Parameters.AddWithValue("@cause", cause.Text);
+                cmd.Parameters.AddWithValue("@idw", Numworker.Text);
+                cmd.Parameters.AddWithValue("@PIBW", Pibtxt.Text);
+                cmd.Parameters.AddWithValue("@id", numberorderv);
 
                 cmd.ExecuteNonQuery();
 
@@ -124,9 +150,9 @@ namespace Human_Depart
         private void Delete_Click(object sender, EventArgs e)
         {
 
-            if (worker_id != 0)
+            if (numberorderv != 0)
             {
-                if (worker_id != 0)
+                if (numberorderv != 0)
                 {
                     MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
 
@@ -135,8 +161,8 @@ namespace Human_Depart
                     MySqlCommand cmd;
 
                     cmd = con.CreateCommand();
-                    cmd.CommandText = "DELETE FROM директор WHERE Номер_директора=@id";
-                    cmd.Parameters.AddWithValue("@id", worker_id);
+                    cmd.CommandText = "DELETE FROM відпустка WHERE Номер_наказу_про_відпустку=@id";
+                    cmd.Parameters.AddWithValue("@id", numberorderv);
 
                     cmd.ExecuteNonQuery();
 
@@ -161,10 +187,13 @@ namespace Human_Depart
         private void ResetFormData()
         {
 
-            worker_id = 0;
+            numberorderv = 0;
             Pibtxt.Clear();
-            birthdaytxt.Refresh();
-           
+            datebtxt.Refresh();
+            dateendtxt.Clear();
+            cause.Clear();
+            Numworker.Refresh();
+            Pibtxt.Clear();
 
         }
 
@@ -173,8 +202,8 @@ namespace Human_Depart
             try
             {
                 DGVPrinter print = new DGVPrinter();
-                print.Title = "Звіт про директора";
-                print.SubTitle = "Дата друку: " + DateTime.Now.ToShortDateString();
+                print.Title = "Звіт про відпустку";
+                print.SubTitle = "Print Date: " + DateTime.Now.ToShortDateString();
                 print.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 print.PageNumbers = true;
                 print.PageNumberInHeader = false;
@@ -268,12 +297,16 @@ namespace Human_Depart
 
                 cmd = con.CreateCommand();
 
-                if (PIBR.Checked)
+                if (CAUSER.Checked)
                 {
-                    cmd.CommandText = "Select * FROM директор WHERE ПІБ =@pib";
+                    cmd.CommandText = "Select * FROM відпустка WHERE Причина =@cause";
+                    cmd.Parameters.AddWithValue("@cause", SearchW.Text);
+                }
+                else if (PIBR.Checked)
+                {
+                    cmd.CommandText = "Select * from відпустка where ПІБ_працівника =@pib";
                     cmd.Parameters.AddWithValue("@pib", SearchW.Text);
                 }
-               
                 MySqlDataReader sd = cmd.ExecuteReader();
                 DataTable dataT = new DataTable();
 
@@ -293,12 +326,38 @@ namespace Human_Depart
 
         private void WorkerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            worker_id = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
-            Pibtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
-            gendercb.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
-            birthdaytxt.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
-            
+            numberorderv = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
+            datebtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
+            dateendtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
+            cause.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
+            Numworker.Text = WorkerDataGrid.SelectedRows[0].Cells[4].Value.ToString();
+            Pibtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[5].Value.ToString();
 
+        }
+
+        private void Numworker_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            con1.Open();
+            MySqlCommand cm = con1.CreateCommand();
+            cm.CommandType = CommandType.Text;
+            cm.CommandText = "select * from працівник where Номер_працівника = '" + Numworker.SelectedItem.ToString() + "'";
+            cm.ExecuteNonQuery();
+            DataTable dataTT = new DataTable();
+            MySqlDataAdapter da = new MySqlDataAdapter(cm);
+            da.Fill(dataTT);
+            foreach (DataRow dr in dataTT.Rows)
+            {
+                Pibtxt.Text = dr["ПІБ_працівника"].ToString();
+               
+
+            }
+
+            con1.Close();
+        }
+
+        private void Vacation_Load(object sender, EventArgs e)
+        {
+            cc();
         }
     }
 }

@@ -14,14 +14,14 @@ using System.Globalization;
 
 namespace Human_Depart
 {
-    public partial class Director : Form
+    public partial class Education : Form
     {
-        public Director()
+        public Education()
         {
             InitializeComponent();
             LoadDataIntoDataGridView();
         }
-        public int worker_id;
+        public int diplomnumber;
         private void LoadDataIntoDataGridView()
         {
             MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
@@ -30,7 +30,7 @@ namespace Human_Depart
             MySqlCommand cmd;
 
             cmd = con.CreateCommand();
-            cmd.CommandText = "Select * from директор;";
+            cmd.CommandText = "Select * from освіта;";
             MySqlDataReader sd = cmd.ExecuteReader();
 
             DataTable dataT = new DataTable();
@@ -54,10 +54,10 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO директор(ПІБ,Стать,Дата_народження) VALUES(@PIB,@gender, @Birthday)";
-                cmd.Parameters.AddWithValue("@PIB", Pibtxt.Text);
-                cmd.Parameters.AddWithValue("@gender", gendercb.Text);
-                cmd.Parameters.AddWithValue("@Birthday", DateTime.TryParse(birthdaytxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
+                cmd.CommandText = "INSERT INTO освіта(Рік_отримання,Спеціальність) VALUES(@year,@spec)";
+                cmd.Parameters.AddWithValue("@year", YearE.Text);
+                cmd.Parameters.AddWithValue("@spec", Spec.Text);
+               
                 
                 cmd.ExecuteNonQuery();
 
@@ -71,15 +71,14 @@ namespace Human_Depart
         {
 
             CultureInfo ci = new CultureInfo("en-IE");
-            if (Pibtxt.Text.Trim() == string.Empty)
+            if (YearE.Text.Trim() == string.Empty)
             {
-                MessageBox.Show("ПІБ потрібно заповнити", "Помилка поля");
+                MessageBox.Show("Рік отримання потрібно заповнити", "Помилка поля");
                 return false;
             }
-            else if (!DateTime.TryParseExact(birthdaytxt.Text, "yyyy,MM,dd", ci, DateTimeStyles.None, out var rs))
+            if (Spec.Text.Trim() == string.Empty)
             {
-
-                MessageBox.Show(" вводи дату", "Помилка поля");
+                MessageBox.Show("Спеціальність потрібно заповнити", "Помилка поля");
                 return false;
             }
             return true;
@@ -88,7 +87,7 @@ namespace Human_Depart
         private void Updated_Click(object sender, EventArgs e)
         {
 
-            if (worker_id != 0)
+            if (diplomnumber != 0)
             {
                 MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
 
@@ -97,13 +96,13 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE директор set ПІБ=@PIB,Стать=@gender,Дата_народження=@Birthday WHERE Номер_директора =@id";
+                cmd.CommandText = "UPDATE освіта set Рік_отримання=@year,Спеціальність=@spec Where Номер_диплома=@id";
 
-                cmd.Parameters.AddWithValue("@PIB", Pibtxt.Text);
-                cmd.Parameters.AddWithValue("@gender", gendercb.Text);
-                cmd.Parameters.AddWithValue("@Birthday", DateTime.TryParse(birthdaytxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
+                cmd.Parameters.AddWithValue("@year", YearE.Text);
+                cmd.Parameters.AddWithValue("@spec", Spec.Text);
+               
                 
-                cmd.Parameters.AddWithValue("@id", this.worker_id);
+                cmd.Parameters.AddWithValue("@id", this.diplomnumber);
 
 
 
@@ -124,9 +123,9 @@ namespace Human_Depart
         private void Delete_Click(object sender, EventArgs e)
         {
 
-            if (worker_id != 0)
+            if (diplomnumber != 0)
             {
-                if (worker_id != 0)
+                if (diplomnumber != 0)
                 {
                     MySqlConnection con = new MySqlConnection(Adddata.ConnectionString());
 
@@ -135,20 +134,20 @@ namespace Human_Depart
                     MySqlCommand cmd;
 
                     cmd = con.CreateCommand();
-                    cmd.CommandText = "DELETE FROM директор WHERE Номер_директора=@id";
-                    cmd.Parameters.AddWithValue("@id", worker_id);
+                    cmd.CommandText = "DELETE FROM освіта WHERE Номер_диплома=@id";
+                    cmd.Parameters.AddWithValue("@id", diplomnumber);
 
                     cmd.ExecuteNonQuery();
 
                     con.Close();
 
-                    MessageBox.Show("Працівник успішно видален", "Успішно");
+                    MessageBox.Show("Інформація про освіту працівника успішно видалена", "Успішно");
 
                     LoadDataIntoDataGridView();
                 }
                 else
                 {
-                    MessageBox.Show("Виберіть працівника якого ви хочете видалити", "Виберіть працівника");
+                    MessageBox.Show("Виберіть поле освіти яку ви хочете видалити", "Виберіть працівника");
                 }
             }
         }
@@ -161,9 +160,9 @@ namespace Human_Depart
         private void ResetFormData()
         {
 
-            worker_id = 0;
-            Pibtxt.Clear();
-            birthdaytxt.Refresh();
+            diplomnumber = 0;
+            YearE.Clear();
+            Spec.Clear();
            
 
         }
@@ -173,7 +172,7 @@ namespace Human_Depart
             try
             {
                 DGVPrinter print = new DGVPrinter();
-                print.Title = "Звіт про директора";
+                print.Title = "Звіт про освіту";
                 print.SubTitle = "Дата друку: " + DateTime.Now.ToShortDateString();
                 print.SubTitleFormatFlags = StringFormatFlags.LineLimit | StringFormatFlags.NoClip;
                 print.PageNumbers = true;
@@ -268,12 +267,17 @@ namespace Human_Depart
 
                 cmd = con.CreateCommand();
 
-                if (PIBR.Checked)
+                if (Special.Checked)
                 {
-                    cmd.CommandText = "Select * FROM директор WHERE ПІБ =@pib";
-                    cmd.Parameters.AddWithValue("@pib", SearchW.Text);
+                    cmd.CommandText = "Select * FROM освіта WHERE Спеціальність=@spec";
+                    cmd.Parameters.AddWithValue("@spec", SearchW.Text);
                 }
-               
+              else if (yearend.Checked)
+                {
+                    cmd.CommandText = "Select * FROM освіта WHERE Рік_отримання=@year";
+                    cmd.Parameters.AddWithValue("@year", SearchW.Text);
+                }
+
                 MySqlDataReader sd = cmd.ExecuteReader();
                 DataTable dataT = new DataTable();
 
@@ -293,11 +297,10 @@ namespace Human_Depart
 
         private void WorkerDataGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            worker_id = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
-            Pibtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
-            gendercb.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
-            birthdaytxt.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
-            
+            diplomnumber = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
+            YearE.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
+            Spec.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
+
 
         }
     }
