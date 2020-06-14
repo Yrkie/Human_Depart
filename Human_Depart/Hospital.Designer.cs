@@ -1,6 +1,6 @@
 ﻿namespace Human_Depart
 {
-    partial class Vacation
+    partial class Hospital
     {
         /// <summary>
         /// Required designer variable.
@@ -55,8 +55,8 @@
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.cause = new System.Windows.Forms.MaskedTextBox();
             this.WorkerDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.type = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WorkerDataGrid)).BeginInit();
@@ -371,7 +371,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.type);
             this.panel2.Controls.Add(this.Pibtxt);
             this.panel2.Controls.Add(this.Numworker);
             this.panel2.Controls.Add(this.dateendtxt);
@@ -382,6 +381,7 @@
             this.panel2.Controls.Add(this.bunifuCustomLabel5);
             this.panel2.Controls.Add(this.bunifuCustomLabel4);
             this.panel2.Controls.Add(this.bunifuCustomLabel3);
+            this.panel2.Controls.Add(this.cause);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1044, 0);
             this.panel2.Name = "panel2";
@@ -478,9 +478,9 @@
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.bunifuCustomLabel6.Location = new System.Drawing.Point(13, 219);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(100, 16);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(65, 16);
             this.bunifuCustomLabel6.TabIndex = 67;
-            this.bunifuCustomLabel6.Text = "Вид відпустки";
+            this.bunifuCustomLabel6.Text = "Причина";
             this.bunifuCustomLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel5
@@ -518,6 +518,14 @@
             this.bunifuCustomLabel3.TabIndex = 64;
             this.bunifuCustomLabel3.Text = "Дата початку";
             this.bunifuCustomLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // cause
+            // 
+            this.cause.Culture = new System.Globalization.CultureInfo("ru-BY");
+            this.cause.Location = new System.Drawing.Point(149, 214);
+            this.cause.Name = "cause";
+            this.cause.Size = new System.Drawing.Size(192, 20);
+            this.cause.TabIndex = 62;
             // 
             // WorkerDataGrid
             // 
@@ -563,18 +571,6 @@
             this.WorkerDataGrid.TabIndex = 9;
             this.WorkerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WorkerDataGrid_CellClick);
             // 
-            // type
-            // 
-            this.type.FormattingEnabled = true;
-            this.type.Items.AddRange(new object[] {
-            "Основна",
-            "Додаткова",
-            "Соціальна"});
-            this.type.Location = new System.Drawing.Point(151, 213);
-            this.type.Name = "type";
-            this.type.Size = new System.Drawing.Size(190, 21);
-            this.type.TabIndex = 79;
-            // 
             // Vacation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -607,6 +603,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
+        public System.Windows.Forms.MaskedTextBox cause;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton Search;
         private System.Windows.Forms.RadioButton PIBR;
@@ -623,6 +620,5 @@
         private System.Windows.Forms.MaskedTextBox dateendtxt;
         private System.Windows.Forms.TextBox Pibtxt;
         private System.Windows.Forms.ComboBox Numworker;
-        private System.Windows.Forms.ComboBox type;
     }
 }

@@ -14,10 +14,10 @@ using System.Globalization;
 
 namespace Human_Depart
 {
-    public partial class Vacation : Form
+    public partial class Hospital : Form
     {
         public static MySqlConnection con1 = new MySqlConnection(@"server=127.0.0.1;user id=root;persistsecurityinfo=True;database=human_depart;allowzerodatetime=True");
-        public Vacation()
+        public Hospital()
         {
             InitializeComponent();
             LoadDataIntoDataGridView();
@@ -72,10 +72,10 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "INSERT INTO відпустка(Дата_початку,Дата_кінця,Вид,Номер_працівника,ПІБ_працівника) VALUES(@dateb,@dateend, @cause,@idw,@PIBW)";
+                cmd.CommandText = "INSERT INTO відпустка(Дата_початку,Дата_кінця,Причина,Номер_працівника,ПІБ_працівника) VALUES(@dateb,@dateend, @cause,@idw,@PIBW)";
                 cmd.Parameters.AddWithValue("@dateb", DateTime.TryParse(datebtxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
                 cmd.Parameters.AddWithValue("@dateend", DateTime.TryParse(dateendtxt.Text, out var birthdayy) ? birthdayy : DateTime.Parse("1980/01/01"));
-                cmd.Parameters.AddWithValue("@cause",type.Text );
+                cmd.Parameters.AddWithValue("@cause",cause.Text );
                 cmd.Parameters.AddWithValue("@idw", Numworker.Text);
                  cmd.Parameters.AddWithValue("@PIBW", Pibtxt.Text);
               
@@ -92,7 +92,7 @@ namespace Human_Depart
         {
 
             CultureInfo ci = new CultureInfo("en-IE");
-            if (type.Text.Trim() == string.Empty)
+            if (cause.Text.Trim() == string.Empty)
             {
                 MessageBox.Show("ПІБ потрібно заповнити", "Помилка поля");
                 return false;
@@ -125,10 +125,10 @@ namespace Human_Depart
                 MySqlCommand cmd;
 
                 cmd = con.CreateCommand();
-                cmd.CommandText = "UPDATE відпустка set Дата_початку= @dateb,Дата_кінця=@dateend,Вид=@cause,Номер_працівника=@idw,ПІБ_працівника=@PIBW WHERE Номер_наказу_про_відпустку =@id";
+                cmd.CommandText = "UPDATE відпустка set Дата_початку= @dateb,Дата_кінця=@dateend,Причина=@cause,Номер_працівника=@idw,ПІБ_працівника=@PIBW WHERE Номер_наказу_про_відпустку =@id";
                 cmd.Parameters.AddWithValue("@dateb", DateTime.TryParse(datebtxt.Text, out var birthday) ? birthday : DateTime.Parse("1980/01/01"));
                 cmd.Parameters.AddWithValue("@dateend", DateTime.TryParse(dateendtxt.Text, out var birthdayy) ? birthdayy : DateTime.Parse("1980/01/01"));
-                cmd.Parameters.AddWithValue("@cause", type.Text);
+                cmd.Parameters.AddWithValue("@cause", cause.Text);
                 cmd.Parameters.AddWithValue("@idw", Numworker.Text);
                 cmd.Parameters.AddWithValue("@PIBW", Pibtxt.Text);
                 cmd.Parameters.AddWithValue("@id", numberorderv);
@@ -191,7 +191,7 @@ namespace Human_Depart
             Pibtxt.Clear();
             datebtxt.Refresh();
             dateendtxt.Clear();
-            type.Refresh();
+            cause.Clear();
             Numworker.Refresh();
             Pibtxt.Clear();
 
@@ -329,7 +329,7 @@ namespace Human_Depart
             numberorderv = Convert.ToInt32(WorkerDataGrid.SelectedRows[0].Cells[0].Value);
             datebtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[1].Value.ToString();
             dateendtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[2].Value.ToString();
-            type.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
+            cause.Text = WorkerDataGrid.SelectedRows[0].Cells[3].Value.ToString();
             Numworker.Text = WorkerDataGrid.SelectedRows[0].Cells[4].Value.ToString();
             Pibtxt.Text = WorkerDataGrid.SelectedRows[0].Cells[5].Value.ToString();
 
