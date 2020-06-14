@@ -84,5 +84,11 @@ namespace Human_Depart
             openNewForm(new Vacation());
             hideSubMenu();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            openNewForm(new Hospital());
+            hideSubMenu();
+        }
     }
 }

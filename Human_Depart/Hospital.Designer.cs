@@ -55,7 +55,7 @@
             this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
-            this.cause = new System.Windows.Forms.MaskedTextBox();
+            this.causecode = new System.Windows.Forms.MaskedTextBox();
             this.WorkerDataGrid = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -381,7 +381,7 @@
             this.panel2.Controls.Add(this.bunifuCustomLabel5);
             this.panel2.Controls.Add(this.bunifuCustomLabel4);
             this.panel2.Controls.Add(this.bunifuCustomLabel3);
-            this.panel2.Controls.Add(this.cause);
+            this.panel2.Controls.Add(this.causecode);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel2.Location = new System.Drawing.Point(1044, 0);
             this.panel2.Name = "panel2";
@@ -464,7 +464,7 @@
             this.bunifuCustomLabel7.AutoSize = true;
             this.bunifuCustomLabel7.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel7.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel7.Location = new System.Drawing.Point(13, 174);
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(13, 172);
             this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
             this.bunifuCustomLabel7.Size = new System.Drawing.Size(78, 16);
             this.bunifuCustomLabel7.TabIndex = 68;
@@ -476,11 +476,11 @@
             this.bunifuCustomLabel6.AutoSize = true;
             this.bunifuCustomLabel6.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel6.Location = new System.Drawing.Point(13, 219);
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(13, 214);
             this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
-            this.bunifuCustomLabel6.Size = new System.Drawing.Size(65, 16);
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(181, 16);
             this.bunifuCustomLabel6.TabIndex = 67;
-            this.bunifuCustomLabel6.Text = "Причина";
+            this.bunifuCustomLabel6.Text = "Код_захворювання_ВООЗ";
             this.bunifuCustomLabel6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bunifuCustomLabel5
@@ -488,7 +488,7 @@
             this.bunifuCustomLabel5.AutoSize = true;
             this.bunifuCustomLabel5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel5.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel5.Location = new System.Drawing.Point(13, 258);
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(13, 256);
             this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
             this.bunifuCustomLabel5.Size = new System.Drawing.Size(129, 16);
             this.bunifuCustomLabel5.TabIndex = 66;
@@ -500,7 +500,7 @@
             this.bunifuCustomLabel4.AutoSize = true;
             this.bunifuCustomLabel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(15, 298);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(13, 298);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(30, 16);
             this.bunifuCustomLabel4.TabIndex = 65;
@@ -512,20 +512,21 @@
             this.bunifuCustomLabel3.AutoSize = true;
             this.bunifuCustomLabel3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.bunifuCustomLabel3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(13, 132);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(13, 130);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(95, 16);
             this.bunifuCustomLabel3.TabIndex = 64;
             this.bunifuCustomLabel3.Text = "Дата початку";
             this.bunifuCustomLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // cause
+            // causecode
             // 
-            this.cause.Culture = new System.Globalization.CultureInfo("ru-BY");
-            this.cause.Location = new System.Drawing.Point(149, 214);
-            this.cause.Name = "cause";
-            this.cause.Size = new System.Drawing.Size(192, 20);
-            this.cause.TabIndex = 62;
+            this.causecode.Culture = new System.Globalization.CultureInfo("ru-BY");
+            this.causecode.Location = new System.Drawing.Point(212, 214);
+            this.causecode.Mask = "L00 L00";
+            this.causecode.Name = "causecode";
+            this.causecode.Size = new System.Drawing.Size(129, 20);
+            this.causecode.TabIndex = 62;
             // 
             // WorkerDataGrid
             // 
@@ -571,7 +572,7 @@
             this.WorkerDataGrid.TabIndex = 9;
             this.WorkerDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.WorkerDataGrid_CellClick);
             // 
-            // Vacation
+            // Hospital
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -581,7 +582,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Vacation";
+            this.Name = "Hospital";
             this.Text = "Worker";
             this.Load += new System.EventHandler(this.Vacation_Load);
             this.panel1.ResumeLayout(false);
@@ -603,7 +604,7 @@
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel4;
         private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel3;
-        public System.Windows.Forms.MaskedTextBox cause;
+        public System.Windows.Forms.MaskedTextBox causecode;
         private Bunifu.Framework.UI.BunifuFlatButton bunifuFlatButton1;
         private Bunifu.Framework.UI.BunifuFlatButton Search;
         private System.Windows.Forms.RadioButton PIBR;
